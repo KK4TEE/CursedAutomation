@@ -9,6 +9,7 @@ VERSION         = "0.1.2"
 DESKLAMPURL     = "10.42.40.22"
 FRIDGELAMPURL   = "10.42.40.21"
 MOVEABLELAMPURL = "10.42.40.20"
+LANTERNLIGHTURL = "10.42.40.52"
 STRINGLIGHTSURL = "10.42.40.144"
 LIVINGFANURL    = "10.42.40.136"
 
@@ -89,6 +90,7 @@ def DrawButtonPannel():
     DrawOnOffButton( " FRIDGE  ", 1, 10)
     DrawOnOffButton( "MOVEABLE ", 1, 20)
     DrawOnOffButton( " STRING  ", 1, 30)
+    DrawOnOffButton( " LANTERN ", 7, 40)
     DrawOnOffButton( "  FAN    ", 1, 40)
     DrawColorButton( "  DESK   ", 1, 50)
 
@@ -214,6 +216,18 @@ def main(stdscr):
             screen.addstr(13, 5, "Screen location is   Y: " + str(y) + " X: " + str(x))
             screen.addstr(14, 5, "Y: " + str(my) + " X: " + str(mx) + str("     "))
 
+
+
+            if my in range (8, 10):
+                # An ON button was pressed
+                if mx in range(40, 49):
+                    if DESKLAMPURL in tp:
+                        tp[LANTERNLIGHTURL].turn_on()
+            elif my in range (11, 13):
+                if mx in range(40, 49):
+                    if DESKLAMPURL in tp:
+                        tp[LANTERNLIGHTURL].turn_off()
+
             if my in range (0, 3):
                 # An ON button was pressed
                 if mx in range(0, 9):
@@ -335,6 +349,7 @@ def main(stdscr):
                     tp[MOVEABLELAMPURL].turn_on()
                     tp[MOVEABLELAMPURL].hsv = ( 30, 0, 90)
                     tp[STRINGLIGHTSURL].turn_off()
+                    tp[LANTERNLIGHTURL].turn_on()
             elif my is 16:
                 if mx in range (60, 69):
                     # Movie
@@ -346,6 +361,7 @@ def main(stdscr):
                     tp[MOVEABLELAMPURL].hsv = ( 30, 85, 5)
                     tp[STRINGLIGHTSURL].turn_on()
                     tp[LIVINGFANURL].turn_off()
+                    #tp[LANTERNLIGHTURL].turn_on()
             elif my is 18:
                     # All off
                     tp[DESKLAMPURL].turn_off()
@@ -353,6 +369,7 @@ def main(stdscr):
                     tp[MOVEABLELAMPURL].turn_off()
                     tp[STRINGLIGHTSURL].turn_off()
                     tp[LIVINGFANURL].turn_off()
+                    tp[LANTERNLIGHTURL].turn_off()
 
         if candleMode is True:
             tp[ModBulbURL].hsv = CandleColor()

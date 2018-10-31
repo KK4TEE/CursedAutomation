@@ -5,7 +5,7 @@ Automating IoT devices with Python and controlling them through a Curses termina
 
 CursedAutomation is a set of home automation and monitoring tools that have been assembled into a graphical terminal interface using Python and Curses. It is a work in progress, and currently all device controls are sent from the terminal running the UI. It will be upgraded in the future to contain a client/server relationship.
 
-It is not designed for use as a standalone or particularly flexible project at this point. It uses the pyHS100 library to control the TP-Link smarthome devices and python-nmap to detect what devices are connected to the network.
+It is not designed for use as a standalone or particularly flexible project at this point. It uses the [pyHS100 library](https://github.com/GadgetReactor/pyHS100/) to control the TP-Link smarthome devices and python-nmap to detect what devices are connected to the network.
 
 Current features:
   *  Touchscreen / Mouse controlled UI for adjusting lights
